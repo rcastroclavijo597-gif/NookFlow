@@ -1,0 +1,43 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- The main N/F curve with gradient -->
+    <path
+        android:pathData="M25,75 C25,75 20,40 35,40 C50,40 45,75 60,75 C75,75 70,30 85,15"
+        android:strokeWidth="10"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="25"
+                android:startY="75"
+                android:endX="85"
+                android:endY="15"
+                android:type="linear">
+                <item android:offset="0" android:color="#4285F4" />
+                <item android:offset="0.5" android:color="#34A853" />
+                <item android:offset="1" android:color="#1A73E8" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- The arrow head -->
+    <path
+        android:pathData="M75,15 L85,15 L85,25"
+        android:strokeWidth="8"
+        android:strokeColor="#1A73E8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- The yellow ribbon crossing -->
+    <path
+        android:pathData="M50,60 C60,60 70,50 85,50"
+        android:strokeWidth="10"
+        android:strokeColor="#FBBC05"
+        android:strokeLineCap="round" />
+
+</vector>

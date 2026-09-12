@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "522950318057",
+    "firebase_url": "https://prog-moviles-9363a-default-rtdb.firebaseio.com",
+    "project_id": "prog-moviles-9363a",
+    "storage_bucket": "prog-moviles-9363a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522950318057:android:6e954487d80c74fdb45d78",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_uTCAy7I2Qzc4_JEZu5aORaK_rX6Hij4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
