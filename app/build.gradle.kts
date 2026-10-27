@@ -38,6 +38,12 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
     implementation(libs.material)
+    implementation("org.osmdroid:osmdroid-android:6.1.20")
+    // Mapa vectorial gratuito (MapLibre). Se usa la versión OpenGL para que funcione en el emulador.
+    implementation("org.maplibre.gl:android-sdk-opengl:13.6.1")
+    implementation("com.google.android.gms:play-services-maps:20.1.0")
+    implementation("com.google.android.gms:play-services-location:21.4.0")
+    implementation("com.google.android.libraries.places:places:3.5.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ext.junit)

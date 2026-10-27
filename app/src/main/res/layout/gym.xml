@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_header_inicio"
         android:elevation="4dp"
+        android:paddingTop="28dp"
         android:paddingBottom="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -21,7 +22,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/bg_input_field"
             android:contentDescription="@null"
             android:padding="12dp"
@@ -31,22 +32,27 @@
 
         <TextView
             android:id="@+id/tvHeaderTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/btnClose"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnConfirm"
+            app:layout_constraintStart_toEndOf="@id/btnClose"
             app:layout_constraintTop_toTopOf="@id/btnClose" />
 
         <ImageView
             android:id="@+id/btnConfirm"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_input_field"
             android:contentDescription="@null"
@@ -176,7 +182,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="24dp"
+                    android:paddingStart="16dp"
                     android:paddingEnd="16dp">
 
                     <TextView
@@ -185,23 +191,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/title_gym_colon"
                         android:textColor="@color/black"
-                        android:textSize="24sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/label_tema_placeholder"
-                        android:textColor="@color/text_hint"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@id/tvGymTitle"
-                        app:layout_constraintStart_toEndOf="@id/tvGymTitle" />
-
                     <ImageView
+                        android:id="@+id/btnTitleMenu"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:contentDescription="@null"
@@ -209,6 +206,21 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="@string/label_tema_placeholder"
+                        android:textColor="@color/text_hint"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/tvGymTitle"
+                        app:layout_constraintEnd_toStartOf="@id/btnTitleMenu"
+                        app:layout_constraintStart_toEndOf="@id/tvGymTitle"
+                        app:layout_constraintTop_toTopOf="@id/tvGymTitle" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -259,6 +271,63 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Card Focus Area / Zona de Enfoque -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardFocusArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_yellow"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:layout_constraintTop_toBottomOf="@id/cardGymInfo">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvFocusAreaTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎯 Zona de Enfoque / Ubicación Exacta"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_chevron_right_small"
+                        app:layout_constraintBottom_toBottomOf="@id/tvFocusAreaTitle"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvFocusAreaTitle" />
+
+                    <TextView
+                        android:id="@+id/tvFocusAreaValue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Toca para registrar tu ubicación actual en el mapa para esta actividad"
+                        android:textColor="@color/text_hint"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvFocusAreaTitle" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#F59E0B"
+                        app:layout_constraintTop_toBottomOf="@id/tvFocusAreaValue" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
             <!-- Card 2: Date Info -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardDate"
@@ -268,7 +337,7 @@
                 app:cardBackgroundColor="@color/card_yellow"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
-                app:layout_constraintTop_toBottomOf="@id/cardGymInfo">
+                app:layout_constraintTop_toBottomOf="@id/cardFocusArea">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -495,6 +564,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
+            android:id="@+id/btnNavHome"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="48dp"
@@ -518,6 +588,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
+                android:id="@+id/btnFloatingAdd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@null"
@@ -527,6 +598,7 @@
         </androidx.cardview.widget.CardView>
 
         <ImageView
+            android:id="@+id/btnNavAssignment"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="48dp"

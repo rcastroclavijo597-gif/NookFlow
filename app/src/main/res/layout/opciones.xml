@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_header_inicio"
         android:elevation="4dp"
+        android:paddingTop="28dp"
         android:paddingBottom="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -21,7 +22,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/bg_input_field"
             android:contentDescription="@null"
             android:padding="12dp"
@@ -31,22 +32,27 @@
 
         <TextView
             android:id="@+id/tvHeaderTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="Mi Perfil y Cuenta"
             android:textColor="@color/black"
-            android:textSize="32sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/btnClose"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnConfirm"
+            app:layout_constraintStart_toEndOf="@id/btnClose"
             app:layout_constraintTop_toTopOf="@id/btnClose" />
 
         <ImageView
             android:id="@+id/btnConfirm"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_input_field"
             android:contentDescription="@null"
@@ -56,473 +62,124 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Sidebar Navigation -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sidebarLayout"
-        android:layout_width="64dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/bg_options_sidebar"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerLayout">
-
-        <View
-            android:id="@+id/selectedCircle"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_circle_plus_nav"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/navIconSchool"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_school_white"
-            app:layout_constraintBottom_toBottomOf="@id/selectedCircle"
-            app:layout_constraintEnd_toEndOf="@id/selectedCircle"
-            app:layout_constraintStart_toStartOf="@id/selectedCircle"
-            app:layout_constraintTop_toTopOf="@id/selectedCircle" />
-
-        <ImageView
-            android:id="@+id/navIconWork"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="24dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_work"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/selectedCircle" />
-
-        <ImageView
-            android:id="@+id/navIconList"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_list"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/navIconWork" />
-
-        <ImageView
-            android:id="@+id/navIconGym"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_fitness"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/navIconList" />
-
-        <ImageView
-            android:id="@+id/navIconEvent"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_event"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/navIconGym" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_add"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/navIconEvent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Main Content Area -->
+    <!-- Scrollable Profile Content -->
     <ScrollView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/sidebarLayout"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerLayout">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
+            android:orientation="vertical"
             android:paddingBottom="24dp">
 
-            <!-- Title Card -->
+            <!-- Profile Info Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/titleCard"
+                android:id="@+id/cardUserProfile"
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/card_blue"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:layout_constraintTop_toTopOf="parent">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/title_clases_colon"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/bg_circle_plus_nav"
                         android:contentDescription="@null"
-                        android:src="@drawable/ic_more_vert"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Card 1: Location Info -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/card_blue"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:layout_constraintTop_toBottomOf="@id/titleCard">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_edificio" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_salon" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_docente" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Card 2: Date Info -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_blue"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:layout_constraintTop_toBottomOf="@id/cardLocation">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_dias" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_inicio" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_fin" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Card 3: Time Info -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_blue"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:layout_constraintTop_toBottomOf="@id/cardDate">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_hora" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_inicio" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opt_fin" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="24dp" android:background="@color/nookflow_blue" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Card 4: Reminder -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardReminder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_blue"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:layout_constraintTop_toBottomOf="@id/cardTime">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
+                        android:padding="18dp"
+                        android:src="@drawable/ic_person"
+                        app:tint="@color/white" />
 
                     <TextView
-                        android:id="@+id/tvReminder"
+                        android:id="@+id/tvProfileName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/opt_recordatorio"
+                        android:layout_marginTop="16dp"
+                        android:text="Nombre de Usuario"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        app:layout_constraintBottom_toBottomOf="@id/tvReminder"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/tvReminder" />
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvReminderDesc"
+                        android:id="@+id/tvProfileEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="@string/label_descripcion_colon"
+                        android:text="usuario@nookflow.com"
                         android:textColor="@color/text_hint"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvReminder" />
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:contentDescription="@null"
-                        android:src="@drawable/ic_chevron_right_small"
-                        app:layout_constraintBottom_toBottomOf="@id/tvReminderDesc"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/tvReminderDesc" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@color/nookflow_blue"
-                        app:layout_constraintTop_toBottomOf="@id/tvReminderDesc" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:textSize="15sp" />
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Bottom Control: Color -->
+            <!-- Account Actions Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardColor"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="@color/card_blue"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:layout_constraintEnd_toStartOf="@+id/cardBottomDesc"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardReminder">
+                android:id="@+id/cardAccountActions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:text="@string/label_color"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </androidx.cardview.widget.CardView>
-
-            <!-- Bottom Control: Descripcion -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardBottomDesc"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="8dp"
-                app:cardBackgroundColor="@color/card_blue"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:layout_constraintBottom_toBottomOf="@id/cardColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cardColor"
-                app:layout_constraintTop_toTopOf="@id/cardColor">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/tvBottomDescLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_descripcion_colon"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <View
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/optionEditName"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/nookflow_blue"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvBottomDescLabel" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="✏️ Editar Nombre de Usuario" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider_color" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/optionNotifications"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔔 Centro de Notificaciones" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:contentDescription="@null" android:src="@drawable/ic_chevron_right_small" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Cerrar Sesión Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/bg_login_button"
+                android:text="Cerrar Sesión 🚪"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </ScrollView>
-
-    <!-- Bottom Navigation Section -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottomNavLayout"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="@color/white"
-        android:elevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="48dp"
-            android:contentDescription="@null"
-            android:padding="8dp"
-            android:src="@drawable/ic_home"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/fabCircle"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/bg_circle_plus_nav"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_add"
-            app:layout_constraintBottom_toBottomOf="@id/fabCircle"
-            app:layout_constraintEnd_toEndOf="@id/fabCircle"
-            app:layout_constraintStart_toStartOf="@id/fabCircle"
-            app:layout_constraintTop_toTopOf="@id/fabCircle" />
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="48dp"
-            android:contentDescription="@null"
-            android:padding="8dp"
-            android:src="@drawable/ic_assignment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

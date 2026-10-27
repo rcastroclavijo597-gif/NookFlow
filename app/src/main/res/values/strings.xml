@@ -62,4 +62,5 @@
     <string name="opt_elegir_icono">Elegir Icono</string>
     <string name="opt_agregar_opciones">Agregar Opcines</string>
     <string name="title_notification_center">Centro de\nNotificaciones</string>
+    <string name="maps_key">YOUR_KEY_HERE</string>
 </resources>

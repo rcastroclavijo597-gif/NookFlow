@@ -12,9 +12,10 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/bg_input_field"
         android:contentDescription="@null"
+        android:elevation="2dp"
         android:padding="12dp"
         android:src="@drawable/ic_chevron_left"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,24 +23,29 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:text="@string/title_notification_center"
         android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
         app:layout_constraintTop_toTopOf="@id/btnBack" />
 
     <!-- Notification List -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,6 +55,7 @@
 
             <!-- Clases Notification -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/notiCardClases"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -57,19 +64,21 @@
                 app:cardElevation="4dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:padding="12dp">
-                    <androidx.cardview.widget.CardView android:id="@+id/iconClases" android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#1A73E8" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="wrap_content"
+                    android:minHeight="110dp"
+                    android:padding="14dp">
+                    <androidx.cardview.widget.CardView android:id="@+id/iconClases" android:layout_width="36dp" android:layout_height="36dp" app:cardBackgroundColor="#1A73E8" app:cardCornerRadius="10dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
                         <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="6dp" android:src="@drawable/ic_school_white" tools:ignore="ContentDescription" />
                     </androidx.cardview.widget.CardView>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="@string/card_clases" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconClases" app:layout_constraintStart_toEndOf="@id/iconClases" app:layout_constraintTop_toTopOf="@id/iconClases" />
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconClases" />
+                    <ImageView android:id="@+id/btnMenu1" android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
+                    <TextView android:id="@+id/notiTitleClases" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginEnd="4dp" android:maxLines="2" android:ellipsize="end" android:text="@string/card_clases" android:textColor="@color/black" android:textSize="15sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconClases" app:layout_constraintEnd_toStartOf="@id/btnMenu1" app:layout_constraintStart_toEndOf="@id/iconClases" app:layout_constraintTop_toTopOf="@id/iconClases" />
+                    <TextView android:id="@+id/notiDescClases" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:maxLines="3" android:ellipsize="end" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconClases" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Trabajo Notification -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/notiCardTrabajo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -78,19 +87,21 @@
                 app:cardElevation="4dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:padding="12dp">
-                    <androidx.cardview.widget.CardView android:id="@+id/iconTrabajo" android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#9333EA" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="wrap_content"
+                    android:minHeight="110dp"
+                    android:padding="14dp">
+                    <androidx.cardview.widget.CardView android:id="@+id/iconTrabajo" android:layout_width="36dp" android:layout_height="36dp" app:cardBackgroundColor="#9333EA" app:cardCornerRadius="10dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
                         <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="6dp" android:src="@drawable/ic_work" app:tint="@color/white" tools:ignore="ContentDescription" />
                     </androidx.cardview.widget.CardView>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="@string/card_trabajo" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconTrabajo" app:layout_constraintStart_toEndOf="@id/iconTrabajo" app:layout_constraintTop_toTopOf="@id/iconTrabajo" />
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconTrabajo" />
+                    <ImageView android:id="@+id/btnMenu2" android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
+                    <TextView android:id="@+id/notiTitleTrabajo" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginEnd="4dp" android:maxLines="2" android:ellipsize="end" android:text="@string/card_trabajo" android:textColor="@color/black" android:textSize="15sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconTrabajo" app:layout_constraintEnd_toStartOf="@id/btnMenu2" app:layout_constraintStart_toEndOf="@id/iconTrabajo" app:layout_constraintTop_toTopOf="@id/iconTrabajo" />
+                    <TextView android:id="@+id/notiDescTrabajo" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:maxLines="3" android:ellipsize="end" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconTrabajo" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Personal Notification -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/notiCardPersonal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -99,19 +110,21 @@
                 app:cardElevation="4dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:padding="12dp">
-                    <androidx.cardview.widget.CardView android:id="@+id/iconPersonal" android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#10B981" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="wrap_content"
+                    android:minHeight="110dp"
+                    android:padding="14dp">
+                    <androidx.cardview.widget.CardView android:id="@+id/iconPersonal" android:layout_width="36dp" android:layout_height="36dp" app:cardBackgroundColor="#10B981" app:cardCornerRadius="10dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
                         <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="6dp" android:src="@drawable/ic_person" app:tint="@color/white" tools:ignore="ContentDescription" />
                     </androidx.cardview.widget.CardView>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="@string/card_personal" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconPersonal" app:layout_constraintStart_toEndOf="@id/iconPersonal" app:layout_constraintTop_toTopOf="@id/iconPersonal" />
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconPersonal" />
+                    <ImageView android:id="@+id/btnMenu3" android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
+                    <TextView android:id="@+id/notiTitlePersonal" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginEnd="4dp" android:maxLines="2" android:ellipsize="end" android:text="@string/card_personal" android:textColor="@color/black" android:textSize="15sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconPersonal" app:layout_constraintEnd_toStartOf="@id/btnMenu3" app:layout_constraintStart_toEndOf="@id/iconPersonal" app:layout_constraintTop_toTopOf="@id/iconPersonal" />
+                    <TextView android:id="@+id/notiDescPersonal" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:maxLines="3" android:ellipsize="end" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconPersonal" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Evento Notification -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/notiCardEventos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -120,19 +133,21 @@
                 app:cardElevation="4dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:padding="12dp">
-                    <androidx.cardview.widget.CardView android:id="@+id/iconEventos" android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#059669" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="wrap_content"
+                    android:minHeight="110dp"
+                    android:padding="14dp">
+                    <androidx.cardview.widget.CardView android:id="@+id/iconEventos" android:layout_width="36dp" android:layout_height="36dp" app:cardBackgroundColor="#059669" app:cardCornerRadius="10dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
                         <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="6dp" android:src="@drawable/ic_event" app:tint="@color/white" tools:ignore="ContentDescription" />
                     </androidx.cardview.widget.CardView>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="@string/card_eventos" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconEventos" app:layout_constraintStart_toEndOf="@id/iconEventos" app:layout_constraintTop_toTopOf="@id/iconEventos" />
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconEventos" />
+                    <ImageView android:id="@+id/btnMenu4" android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
+                    <TextView android:id="@+id/notiTitleEventos" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginEnd="4dp" android:maxLines="2" android:ellipsize="end" android:text="@string/card_eventos" android:textColor="@color/black" android:textSize="15sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconEventos" app:layout_constraintEnd_toStartOf="@id/btnMenu4" app:layout_constraintStart_toEndOf="@id/iconEventos" app:layout_constraintTop_toTopOf="@id/iconEventos" />
+                    <TextView android:id="@+id/notiDescEventos" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:maxLines="3" android:ellipsize="end" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconEventos" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- GYM Notification -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/notiCardGym"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -141,14 +156,15 @@
                 app:cardElevation="4dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:padding="12dp">
-                    <androidx.cardview.widget.CardView android:id="@+id/iconGym" android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#F59E0B" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="wrap_content"
+                    android:minHeight="110dp"
+                    android:padding="14dp">
+                    <androidx.cardview.widget.CardView android:id="@+id/iconGym" android:layout_width="36dp" android:layout_height="36dp" app:cardBackgroundColor="#F59E0B" app:cardCornerRadius="10dp" app:cardElevation="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
                         <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="6dp" android:src="@drawable/ic_fitness" app:tint="@color/white" tools:ignore="ContentDescription" />
                     </androidx.cardview.widget.CardView>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="@string/card_gym" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconGym" app:layout_constraintStart_toEndOf="@id/iconGym" app:layout_constraintTop_toTopOf="@id/iconGym" />
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconGym" />
+                    <ImageView android:id="@+id/btnMenu5" android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_more_vert" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" tools:ignore="ContentDescription" />
+                    <TextView android:id="@+id/notiTitleGym" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginEnd="4dp" android:maxLines="2" android:ellipsize="end" android:text="@string/card_gym" android:textColor="@color/black" android:textSize="15sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="@id/iconGym" app:layout_constraintEnd_toStartOf="@id/btnMenu5" app:layout_constraintStart_toEndOf="@id/iconGym" app:layout_constraintTop_toTopOf="@id/iconGym" />
+                    <TextView android:id="@+id/notiDescGym" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:maxLines="3" android:ellipsize="end" android:text="@string/card_desc_label" android:textColor="@color/text_hint" android:textSize="12sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iconGym" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

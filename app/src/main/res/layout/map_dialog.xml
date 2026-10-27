@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Fullscreen Google Map Fragment -->
+    <org.maplibre.android.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Top Header Bar with Close and Confirm -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mapHeaderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnMapClose"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bg_input_field"
+            android:contentDescription="@null"
+            android:padding="12dp"
+            android:src="@drawable/ic_close"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMapHeaderTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="Mapa NookFlow 🗺️"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/btnMapClose"
+            app:layout_constraintEnd_toStartOf="@id/btnMapConfirm"
+            app:layout_constraintStart_toEndOf="@id/btnMapClose"
+            app:layout_constraintTop_toTopOf="@id/btnMapClose" />
+
+        <ImageView
+            android:id="@+id/btnMapConfirm"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_input_field"
+            android:contentDescription="@null"
+            android:padding="12dp"
+            android:src="@drawable/ic_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Places Autocomplete Search Bar Container -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mapHeaderLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingEnd="6dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_search" />
+
+            <EditText
+                android:id="@+id/etSearchPlace"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="Search a place"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textColorHint="@color/text_hint"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/btnSearchPlace"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_chevron_right" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Selected Location Info Panel -->
+    <!-- Botones de zoom (+ / −) -->
+    <LinearLayout
+        android:id="@+id/zoomControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_input_field"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/btnMapStyle"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/btnZoomIn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color" />
+
+        <TextView
+            android:id="@+id/btnZoomOut"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="−"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Botón para cambiar entre vista Satélite y Mapa -->
+    <TextView
+        android:id="@+id/btnMapStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bg_login_button"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:text="🗺️ Ver mapa"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/mapBottomBar"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mapBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/card_blue"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvSelectedLocationName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 Ubicación Seleccionada:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSelectedLocationCoords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Buscando tu posición GPS..."
+                android:textColor="@color/text_hint"
+                android:textSize="13sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnConfirmMapLocation"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_login_button"
+                android:text="Confirmar esta Ubicación 📍"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="24dp">
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="36dp"
+            android:contentDescription="@null"
+            android:src="@drawable/logo_nookflow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo" />
+
+        <TextView
+            android:id="@+id/regTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Crear Cuenta Nueva"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appName" />
+
+        <EditText
+            android:id="@+id/regNameInput"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_input_field"
+            android:hint="Nombre Completo"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regTitle" />
+
+        <EditText
+            android:id="@+id/regEmailInput"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input_field"
+            android:hint="@string/hint_email"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regNameInput" />
+
+        <EditText
+            android:id="@+id/regPasswordInput"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input_field"
+            android:hint="@string/hint_password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regEmailInput" />
+
+        <EditText
+            android:id="@+id/regConfirmPasswordInput"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input_field"
+            android:hint="Confirmar Contraseña"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regPasswordInput" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCreateAccount"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_login_button"
+            android:text="Crear Cuenta"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regConfirmPasswordInput" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGoToLogin"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_social_button"
+            android:text="¿Ya tienes una cuenta? Iniciar Sesión"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnCreateAccount" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
